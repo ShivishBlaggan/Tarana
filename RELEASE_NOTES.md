@@ -25,7 +25,7 @@ A clean, ad-free Android music player. Local library, streaming, offline downloa
 | Min Android | 8.0 (API 26) |
 | Target | Android 16 (API 36) |
 | Size | 147.8 MiB |
-| SHA-256 | `ae12b203d0b1fd200348beb110a07b171969b67e2455eac98ba8237889cd5d90` |
+| SHA-256 | `f117a08e4de6814a0aaafc4371165f51dc1fb0ff186c38c38a22cdabee0ccd89` |
 
 Verify the download with `certutil -hashfile MuhMeiMusic.apk SHA256` on Windows, or `sha256sum` on Linux/macOS.
 

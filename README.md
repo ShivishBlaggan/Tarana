@@ -50,6 +50,17 @@ apksigner sign --ks muhmei.keystore --out MuhMeiMusic.apk apk-work/muhmei-aligne
 
 The keystore used for the published builds is not included — sign with your own key if you rebuild, and uninstall the released build first (signatures differ).
 
+## Updates
+
+The app's built-in updater (Settings → Search → "App Updates") reads this repository's latest GitHub release and offers the APK attached to it. To ship an update:
+
+1. Bump `versionName`/`versionCode` in the build and produce a new signed APK.
+2. Create a release with a tag like `v1.4.7` (the leading `v` is stripped before comparing versions).
+3. Attach the new `MuhMeiMusic.apk` to that release — the updater reads `tag_name`, `body` (changelog) and `assets[].browser_download_url`.
+4. Write the changelog in the release notes; it's shown in the in-app changelog.
+
+If no newer release exists, the app reports "Up to date" and stays quiet.
+
 ## Notes
 
 - Audio playback was verified on an Android 15 emulator: MediaSession reports `PLAYING`, position advances, 48 kHz AudioTrack holds audio focus.
