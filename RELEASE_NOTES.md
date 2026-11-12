@@ -28,7 +28,7 @@ Tarana is a free and open source project, built on top of the open source Androi
 | Min Android | 8.0 (API 26) |
 | Target | Android 16 (API 36) |
 | Size | 147.8 MiB |
-| SHA-256 | `dde72e5ce37c1c3d5201944ea371b8bcc9a00aef22b05e19304b571d6a0ca72e` |
+| SHA-256 | `1a9af72a7415f60256236c631acc3006a4f074affcd318fdde7eff64eb1edd75` |
 
 Verify the download with `certutil -hashfile Tarana.apk SHA256` on Windows, or `sha256sum` on Linux and macOS.
 
