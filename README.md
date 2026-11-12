@@ -1,74 +1,76 @@
-# MuhMeiMusic
+# Tarana
 
-A smooth, ad-free music player for Android. Local playback, YouTube Music style streaming, offline downloads, lyrics, and a queue that actually behaves.
+A clean, ad-free music player for Android. Local library, streaming, offline downloads, synced lyrics, and a queue that actually behaves.
 
-**Made with all the open source things.**
+Tarana is a **free and open source project**. It's built on top of the open source Android music ecosystem — the players, libraries and tools that came before it — and it wouldn't exist without them.
 
 ---
 
 ## Download
 
-Grab the latest `MuhMeiMusic.apk` from [Releases](../../releases) and install it (allow "install unknown apps" for your browser or file manager).
+Grab the latest `Tarana.apk` from [Releases](../../releases) and install it (allow "install unknown apps" for your browser or file manager).
 
-- Package: `echo.music.iad1tya`
-- Version: 1.4.6
-- Min Android: 8.0 (API 26) — tested on Android 15
-- Size: ~148 MB
-- Signed with a self-signed release key, so updates must come from this repo (install over the old build, don't mix with other apps' signatures).
+| | |
+| --- | --- |
+| Version | 1.5.0 (169) |
+| Package | `echo.music.iad1tya` |
+| Min Android | 8.0 (API 26) |
+| Target | Android 16 (API 36) |
+| Size | ~148 MB |
+
+The APK is signed with a self-signed release key. Install over older builds only if they came from this repo; otherwise uninstall first.
 
 ## What's inside
 
-- **Playback** — gapless queue, shuffle/repeat, crossfade, audio focus handling, MediaSession with lock screen + notification controls
-- **Library** — songs, artists, albums, playlists, folders; instant local index
-- **Search** — songs, artists, albums, plus online catalog results
-- **Streaming & downloads** — play online tracks or save them for offline listening
-- **Lyrics** — synced lyrics view, plus a full-screen lyric mode
-- **Music Flow / radio** — endless related tracks from any song
-- **Equalizer** — built-in EQ and bass/surround controls
+- **Playback** — gapless queue, shuffle/repeat, crossfade, audio focus handling, MediaSession controls on the lock screen and in the notification shade
+- **Library** — songs, artists, albums, playlists and folders, indexed instantly from device storage
+- **Search** — local library plus online catalog results
+- **Streaming & downloads** — play online or save tracks for offline listening
+- **Lyrics** — synced lyrics view and a full-screen lyric mode
+- **Music Flow** — endless related tracks from any song
+- **Equalizer** — built-in EQ with bass and surround controls
 - **Sleep timer, playback speed, skip silence**
-- **Backup & restore** — export/import your library and settings
-- **Cast & Together** — send audio to a TV/speaker or listen with friends
-- **Widgets and quick settings tile**
-- **Material 3 UI** with dark/light theming and dynamic color
-- **No ads, no trackers, no account required** to play local music
-
-## Screenshots
-
-| Home | Now Playing | Settings |
-| --- | --- | --- |
-| ![Home](screenshots/home.png) | ![Now Playing](screenshots/now-playing.png) | ![Settings](screenshots/settings.png) |
-
-## Building
-
-The release APK in this repo is built from the decoded resource/smali tree kept in `apk-work/echo`:
-
-```bash
-java -jar tools/apktool.jar b apk-work/echo -o apk-work/muhmei-unsigned.apk
-zipalign -f -p 4 apk-work/muhmei-unsigned.apk apk-work/muhmei-aligned.apk
-apksigner sign --ks muhmei.keystore --out MuhMeiMusic.apk apk-work/muhmei-aligned.apk
-```
-
-The keystore used for the published builds is not included — sign with your own key if you rebuild, and uninstall the released build first (signatures differ).
+- **Backup & restore** — export and import your library and settings
+- **Cast & Listen Together** — send audio to a TV or speaker, or sync playback with friends
+- **Widgets and a quick settings tile**
+- **Material 3 UI** with light/dark theming and dynamic color
+- **No ads, no trackers, no account needed** for local playback
 
 ## Updates
 
-The app's built-in updater (Settings → Search → "App Updates") reads this repository's latest GitHub release and offers the APK attached to it. To ship an update:
+Tarana updates itself. **Settings → Search → "System update"** checks this repository's latest GitHub release, compares it to the installed version, and if a newer one exists it downloads the APK and hands it to the Android installer — all inside the app. No browser, no redirects, no third-party download pages.
 
-1. Bump `versionName`/`versionCode` in the build and produce a new signed APK.
-2. Create a release with a tag like `v1.4.7` (the leading `v` is stripped before comparing versions).
-3. Attach the new `MuhMeiMusic.apk` to that release — the updater reads `tag_name`, `body` (changelog) and `assets[].browser_download_url`.
-4. Write the changelog in the release notes; it's shown in the in-app changelog.
+To publish an update:
 
-If no newer release exists, the app reports "Up to date" and stays quiet.
+1. Bump `versionName` / `versionCode`.
+2. Create a release tagged `v1.5.1` (the leading `v` is stripped before comparing versions).
+3. Attach the new APK to that release — the updater reads `tag_name`, `body` (changelog) and `assets[].browser_download_url`.
+4. Write the changelog as the release notes; that's what the app displays.
+
+Drafts and pre-releases are ignored, so don't publish those if you want the update to go out.
+
+## Building
+
+The released APK is produced from the decoded resource/smali tree:
+
+```bash
+java -jar tools/apktool.jar b apk-work/echo -o apk-work/unsigned.apk
+zipalign -f -p 4 apk-work/unsigned.apk apk-work/aligned.apk
+apksigner sign --ks your.keystore --out Tarana.apk apk-work/aligned.apk
+```
+
+Sign with your own key if you rebuild — the published keystore is not included, and builds signed with a different key can't install over the official one.
 
 ## Notes
 
-- Audio playback was verified on an Android 15 emulator: MediaSession reports `PLAYING`, position advances, 48 kHz AudioTrack holds audio focus.
-- The app talks to public music metadata/catalog endpoints; some features need network.
-- This project is distributed under the GPL, like the players it grew out of. See `LICENSE`.
+- Verified on Android 15: MediaSession reports `PLAYING`, playback position advances, and there are no startup crashes.
+- Some features need network access (streaming, catalog search, lyrics, artwork).
+- This project is distributed under the GPL-3.0. See `LICENSE`.
 
 ## Credits
 
-Built on the shoulders of the open source Android music community — every player, library, and utility that came before it.
+Tarana exists because of the open source community that built the Android music player ecosystem — every library, player and utility this project stands on. Thank you to everyone who publishes their work openly.
 
-**Made with all the open source things.**
+Maintained by [Shivish](https://github.com/ShivishBlaggan).
+
+**An open source project, made with open source.**
