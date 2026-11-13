@@ -12,11 +12,11 @@ Grab the latest `Tarana.apk` from [Releases](../../releases) and install it (all
 
 | | |
 | --- | --- |
-| Version | 1.5.0 (169) |
+| Version | 1.5.2 (171) |
 | Package | `echo.music.iad1tya` |
 | Min Android | 8.0 (API 26) |
 | Target | Android 16 (API 36) |
-| Size | ~148 MB |
+| Size | 147.8 MiB |
 
 The APK is signed with a self-signed release key. Install over older builds only if they came from this repo; otherwise uninstall first.
 
@@ -43,7 +43,7 @@ Tarana updates itself. **Settings → Search → "System update"** checks this r
 To publish an update:
 
 1. Bump `versionName` / `versionCode`.
-2. Create a release tagged `v1.5.1` (the leading `v` is stripped before comparing versions).
+2. Create a release tagged `v1.5.3` (the leading `v` is stripped before comparing versions).
 3. Attach the new APK to that release — the updater reads `tag_name`, `body` (changelog) and `assets[].browser_download_url`.
 4. Write the changelog as the release notes; that's what the app displays.
 
